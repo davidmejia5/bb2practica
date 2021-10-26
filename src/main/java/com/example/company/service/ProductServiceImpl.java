@@ -20,8 +20,8 @@ public class ProductServiceImpl implements ProductService{
         productRepository.deleteById(id);
     }
     public Product save(ProductDTO productDTO){
-        JMapper<Product,ProductDTO> resultproductDTOJMapper = new JMapper<>(Product.class,ProductDTO.class);
-        Product result = resultproductDTOJMapper.getDestination(productDTO);
+        JMapper<Product,ProductDTO> productDTOJMapper = new JMapper<>(Product.class,ProductDTO.class);
+        Product result = productDTOJMapper.getDestination(productDTO);
         return result;
     }
 

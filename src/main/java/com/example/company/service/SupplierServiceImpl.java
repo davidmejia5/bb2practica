@@ -9,7 +9,9 @@ public class SupplierServiceImpl implements SupplierService{
 
     SupplierRepository supplierRepository;
 
-/*
-    public Supplier addSupplier
-*/
+
+    public Supplier findSupplierById(Long id){
+        return supplierRepository.getById(id);
+    }
+
 }

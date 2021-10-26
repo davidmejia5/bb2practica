@@ -1,10 +1,14 @@
 package com.example.company.dto;
 
 
-public class CountryDTO {
+import com.googlecode.jmapper.annotations.JMap;
 
+public class CountryDTO {
+    @JMap
     private Long idCountry;
+    @JMap
     private String countryCode;
+    @JMap
     private String name;
 
     public Long getIdCountry() {
