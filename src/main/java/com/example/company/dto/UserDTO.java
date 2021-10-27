@@ -1,11 +1,27 @@
 package com.example.company.dto;
 
+import com.example.company.entities.User;
+import com.googlecode.jmapper.annotations.JMap;
+
 public class UserDTO {
+
     private Long idUser;
+
     private String name;
+
     private String surname;
+
     private String email;
+
     private String password;
+
+    public UserDTO(User user){
+        this.idUser = user.getIdUser();
+        this.name = user.getName();
+        this.surname = user.getSurname();
+        this.email = user.getEmail();
+        this.password = user.getPassword();
+    }
 
     public Long getIdUser() {
         return idUser;
@@ -46,4 +62,5 @@ public class UserDTO {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

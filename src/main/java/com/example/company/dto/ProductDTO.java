@@ -1,5 +1,8 @@
 package com.example.company.dto;
 
+import com.example.company.entities.PriceReduction;
+import com.example.company.entities.Product;
+import com.example.company.entities.Supplier;
 import com.example.company.enums.ProductState;
 import com.googlecode.jmapper.annotations.JMap;
 
@@ -9,26 +12,43 @@ import java.util.List;
 
 public class ProductDTO {
 
-    private Long id;
-    @JMap
+    @JMap("idproduct")
+    private Long idProduct;
+    @JMap("description")
     private String description;
-    @JMap
+    @JMap("price")
     private double price;
-    @JMap
+    @JMap("productstate")
     private ProductState productState = ProductState.ACTIVE;
-    @JMap
+    @JMap("creationdate")
     private Date creationDate;
-    @JMap
-    private List<SupplierDTO> supplierDTOList = new ArrayList();
-    @JMap
-    private PriceReductionDTO priceReductionDTO;
+    @JMap("supplier_list")
+    private List<SupplierDTO> supplierList = new ArrayList();
+    @JMap("price_Reduction_list")
+    private List<PriceReductionDTO> priceReductionList;
 
-    public Long getId() {
-        return id;
+    /*public ProductDTO(Product product){
+        this.idProduct = product.getIdProduct();
+        this.description = product.getDescription();
+        this.productState = product.getProductState();
+        this.creationDate = product.getCreationDate();
+
+        for(Supplier supplier : product.getSupplierList()){
+            this.supplierList.add(new SupplierDTO(supplier));
+        }
+
+        for(PriceReduction priceReduction: product.getPriceReductionList()){
+            this.priceReductionList.add(new PriceReductionDTO(priceReduction));
+        }
+    }*/
+
+
+    public Long getIdProduct() {
+        return idProduct;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdProduct(Long idProduct) {
+        this.idProduct = idProduct;
     }
 
     public String getDescription() {
@@ -63,19 +83,19 @@ public class ProductDTO {
         this.creationDate = creationDate;
     }
 
-    public List<SupplierDTO> getSupplierDTOList() {
-        return supplierDTOList;
+    public List<SupplierDTO> getSupplierList() {
+        return supplierList;
     }
 
-    public void setSupplierDTOList(List<SupplierDTO> supplierDTOList) {
-        this.supplierDTOList = supplierDTOList;
+    public void setSupplierList(List<SupplierDTO> supplierList) {
+        this.supplierList = supplierList;
     }
 
-    public PriceReductionDTO getPriceReductionDTO() {
-        return priceReductionDTO;
+    public List<PriceReductionDTO> getPriceReductionList() {
+        return priceReductionList;
     }
 
-    public void setPriceReductionDTO(PriceReductionDTO priceReductionDTO) {
-        this.priceReductionDTO = priceReductionDTO;
+    public void setPriceReductionList(List<PriceReductionDTO> priceReductionList) {
+        this.priceReductionList = priceReductionList;
     }
 }

@@ -7,6 +7,9 @@ import com.googlecode.jmapper.JMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CountryServiceImpl implements CountryService{
 
@@ -14,10 +17,18 @@ public class CountryServiceImpl implements CountryService{
     CountryRepository countryRepository;
 
     public CountryDTO getCountryById(Long id){
-        JMapper<CountryDTO,Country> countryCountryJMapper = new JMapper<>(CountryDTO.class,Country.class);
-        CountryDTO result = countryCountryJMapper.getDestination(countryRepository.getById(id));
+        CountryDTO countryDTO = new CountryDTO(countryRepository.getById(id));
+        return countryDTO;
+    }
 
-        return result;
+    public List<CountryDTO> getAllCountry(){
+        List<Country> countryList = countryRepository.findAll();
+        List<CountryDTO> countryDTOList = new ArrayList<>();
+        for(Country country : countryList){
+            CountryDTO countryDTO = new CountryDTO(country);
+            countryDTOList.add(countryDTO);
+        }
+        return countryDTOList;
     }
 
 }

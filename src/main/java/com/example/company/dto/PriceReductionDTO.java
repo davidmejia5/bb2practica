@@ -1,5 +1,7 @@
 package com.example.company.dto;
 
+import com.example.company.entities.PriceReduction;
+
 import java.sql.Date;
 
 public class PriceReductionDTO {
@@ -7,6 +9,13 @@ public class PriceReductionDTO {
     private double reducePrice;
     private Date startDay;
     private Date endDay;
+
+    public PriceReductionDTO(PriceReduction priceReduction){
+        this.id = priceReduction.getId();
+        this.reducePrice = priceReduction.getReducePrice();
+        this.startDay = priceReduction.getStartDay();
+        this.endDay = priceReduction.getEndDay();
+    }
 
     public Long getId() {
         return id;

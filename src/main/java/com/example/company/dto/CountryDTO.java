@@ -1,15 +1,21 @@
 package com.example.company.dto;
 
 
-import com.googlecode.jmapper.annotations.JMap;
+import com.example.company.entities.Country;
+
 
 public class CountryDTO {
-    @JMap
+
     private Long idCountry;
-    @JMap
     private String countryCode;
-    @JMap
     private String name;
+
+    public CountryDTO(Country country){
+        this.idCountry = country.getIdCountry();
+        this.countryCode = country.getCountryCode();
+        this.name = country.getName();
+    }
+
 
     public Long getIdCountry() {
         return idCountry;
