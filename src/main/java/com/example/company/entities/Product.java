@@ -28,20 +28,14 @@ public class Product {
     private ProductState productState = ProductState.ACTIVE;
     @Column(name = "creationdate",nullable = false)
     private Date creationDate;
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "PRODUCT_SUPPLIER",
             joinColumns = {@JoinColumn(name = "idproduct")},
             inverseJoinColumns = {@JoinColumn(name = "idsupplier")}
     )
     private List<Supplier> supplierList = new ArrayList();
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "PRICE_REDUCTION",
             joinColumns = {@JoinColumn(name = "idproduct")},

@@ -12,19 +12,19 @@ import java.util.List;
 
 public class ProductDTO {
 
-    @JMap("idproduct")
+    @JMap("idProduct")
     private Long idProduct;
     @JMap("description")
     private String description;
     @JMap("price")
     private double price;
-    @JMap("productstate")
+    @JMap("productState")
     private ProductState productState = ProductState.ACTIVE;
-    @JMap("creationdate")
+    @JMap("creationDate")
     private Date creationDate;
-    @JMap("supplier_list")
+    @JMap("supplierList")
     private List<SupplierDTO> supplierList = new ArrayList();
-    @JMap("price_Reduction_list")
+    @JMap("priceReductionList")
     private List<PriceReductionDTO> priceReductionList;
 
     /*public ProductDTO(Product product){

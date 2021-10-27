@@ -4,6 +4,7 @@ import com.example.company.dto.ProductDTO;
 import com.example.company.entities.Product;
 import com.example.company.repository.ProductRepository;
 import com.googlecode.jmapper.JMapper;
+import com.googlecode.jmapper.api.JMapperAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ public class ProductServiceImpl implements ProductService{
 
     public ProductDTO findById(Long id){
         Product product = productRepository.getById(id);
+//        JMapperAPI jmapperApi = new JMapperAPI().add(JMapperAPI.mappedClass(ProductDTO.class));
 //        ProductDTO productDTO = new ProductDTO(product);
         JMapper<ProductDTO,Product> productJMapper = new JMapper<>(ProductDTO.class,Product.class);
         ProductDTO productDTO = productJMapper.getDestination(product);
