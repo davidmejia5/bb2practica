@@ -12,14 +12,14 @@ public class SupplierDTO {
     List<ProductDTO> products = new ArrayList<>();
     private CountryDTO countryDTO;
 
-//    public SupplierDTO(Supplier supplier){
-//        this.id = supplier.getId();
-//        this.name = supplier.getName();
-//        this.countryDTO = new CountryDTO(supplier.getCountry());
-//        for(Product product : supplier.getProducts()){
-//            this.products.add(new ProductDTO(product));
-//        }
-//    }
+    public SupplierDTO(Supplier supplier){
+        this.id = supplier.getId();
+        this.name = supplier.getName();
+        this.countryDTO = new CountryDTO(supplier.getCountry());
+        for(Product product : supplier.getProducts()){
+            this.products.add(new ProductDTO(product));
+        }
+    }
 
     public Long getId() {
         return id;

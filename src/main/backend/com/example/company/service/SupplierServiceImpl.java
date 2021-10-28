@@ -16,18 +16,18 @@ public class SupplierServiceImpl implements SupplierService{
     SupplierRepository supplierRepository;
 
     public SupplierDTO findSupplierById(Long id){
-//        SupplierDTO supplierDTO = new SupplierDTO(supplierRepository.getById(id));
-        return null;
+        SupplierDTO supplierDTO = new SupplierDTO(supplierRepository.getById(id));
+        return supplierDTO;
     }
 
     public List<SupplierDTO> getAllSupplier(){
-        /*List<Supplier> supplierList = supplierRepository.findAll();
+        List<Supplier> supplierList = supplierRepository.findAll();
         List<SupplierDTO> supplierDTOList = new ArrayList<>();
         for(Supplier supplier : supplierList){
             SupplierDTO supplierDTO = new SupplierDTO(supplier);
             supplierDTOList.add(supplierDTO);
-        }*/
-        return null;
+        }
+        return supplierDTOList;
     }
 
 }

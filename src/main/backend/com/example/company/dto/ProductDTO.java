@@ -12,23 +12,17 @@ import java.util.List;
 
 public class ProductDTO {
 
-    @JMap("idProduct")
     private Long idProduct;
-    @JMap("description")
     private String description;
-    @JMap("price")
     private double price;
-    @JMap("productState")
     private ProductState productState = ProductState.ACTIVE;
-    @JMap("creationDate")
     private Date creationDate;
-    @JMap("supplierList")
     private List<SupplierDTO> supplierList = new ArrayList();
-    @JMap("priceReductionList")
     private List<PriceReductionDTO> priceReductionList;
 
-    /*public ProductDTO(Product product){
+    public ProductDTO(Product product){
         this.idProduct = product.getIdProduct();
+        this.price = product.getPrice();
         this.description = product.getDescription();
         this.productState = product.getProductState();
         this.creationDate = product.getCreationDate();
@@ -40,8 +34,7 @@ public class ProductDTO {
         for(PriceReduction priceReduction: product.getPriceReductionList()){
             this.priceReductionList.add(new PriceReductionDTO(priceReduction));
         }
-    }*/
-
+    }
 
     public Long getIdProduct() {
         return idProduct;
