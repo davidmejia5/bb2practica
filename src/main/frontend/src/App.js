@@ -1,6 +1,5 @@
 import './App.css'
 import Navbar from './components/navbar'
-import Home from './components/home'
 import Login from './components/login'
 import Product from './components/product'
 import Error from './components/error'
@@ -12,10 +11,9 @@ function App() {
       <Navbar />
       <Switch>
         <Route exact path='/'>
-          <Home />
-        </Route>
-        <Route path='/login'>
-          <Login />
+          <div class='center'>
+            <Login />
+          </div>
         </Route>
         <Route path='/product'>
           <Product />

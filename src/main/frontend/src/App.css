@@ -1,5 +1,5 @@
-#center {
-  margin: auto;
+.center {
+  margin: 5% auto;
   display: flex;
   align-items: center;
   justify-content: center;

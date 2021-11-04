@@ -1,7 +1,7 @@
 package com.example.company.enums;
 
 public enum ProductState {
-    ACTIVE(1, "Active"), DISCOUNTED(2, "Discounted");
+    ACTIVE(0, "Active"), DISCOUNTED(1, "Discounted");
 
     private int state;
     private String valueState;

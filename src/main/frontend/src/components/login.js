@@ -1,19 +1,31 @@
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { useHistory } from 'react-router-dom'
 
-function Login() {
+function Login(props) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [user, setUser] = useState([])
-
+  const [client, setClient] = useState({ user: [] })
+  const history = useHistory()
+  console.log(props)
+  const searchEmail = async () => {
+    const url = '/user/' + email
+    const response = await fetch(url)
+    const data = await response.json()
+    console.log(data)
+    setClient({ user: data })
+  }
+  const { user } = client
   const handleSumit = (e) => {
     e.preventDefault()
-    if (email && password) {
-      console.log('submit the form')
-    } else {
-      console.log('empty values')
+
+    searchEmail()
+    if (user.email === email && user.password === password) {
+      localStorage.setItem('user', JSON.stringify(user))
+      history.push('/product')
     }
+    //To do: Mensaje error para usuario invalido
   }
 
   return (

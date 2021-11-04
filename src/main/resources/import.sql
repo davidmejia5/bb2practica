@@ -1,9 +1,9 @@
 --Productos
-INSERT INTO PRODUCT (idproduct,description,price,productstate,creationdate) values (1,'Mesa escritorio', 43, 1,'2021-10-14');
-INSERT INTO PRODUCT (idproduct,description,price,productstate,creationdate) values (2,'Cama familiar', 65.12, 1,'2021-10-26');
+INSERT INTO PRODUCT (idproduct,description,price,productstate,creationdate) values (1,'Mesa escritorio', 43, 0,'2021-10-14');
+INSERT INTO PRODUCT (idproduct,description,price,productstate,creationdate) values (2,'Cama familiar', 65.12, 0,'2021-10-26');
 INSERT INTO PRODUCT (idproduct,description,price,productstate,creationdate) values (3,'Sofá triangular', 230.97, 1,'2021-10-26');
 INSERT INTO PRODUCT (idproduct,description,price,productstate,creationdate) values (4,'Vasos copa', 7.67, 1,'2021-10-26');
-INSERT INTO PRODUCT (idproduct,description,price,productstate,creationdate) values (5,'Lampara cuarto', 12.50, 1,'2021-10-26');
+INSERT INTO PRODUCT (idproduct,description,price,productstate,creationdate) values (5,'Lampara cuarto', 12.50, 0,'2021-10-26');
 
 --Usuarios
 
