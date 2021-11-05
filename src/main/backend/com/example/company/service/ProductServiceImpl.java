@@ -40,7 +40,10 @@ public class ProductServiceImpl implements ProductService{
         Optional<Product> prod = productRepository.findById(productDTO.getIdProduct());
         if(prod.isPresent()){
             //Modificar datos en entidad
-            //set del dto 
+            //set del dto
+            prod.get().setIdProduct(productDTO.getIdProduct());
+            prod.get().setProductState(productDTO.getProductState());
+            prod.get().setPrice(productDTO.getPrice());
             productRepository.save(prod.get());
             return prod;
         }
