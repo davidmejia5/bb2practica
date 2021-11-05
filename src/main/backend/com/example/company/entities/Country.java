@@ -2,6 +2,7 @@ package com.example.company.entities;
 
 import com.example.company.dto.CountryDTO;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import java.sql.Date;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @Table(name = "country")
 public class Country {
     @Id
@@ -19,5 +21,11 @@ public class Country {
     @Column(name = "countrycode",nullable = false,unique = true)
     private String countryCode;
     private String name;
+
+    Country(CountryDTO countryDTO){
+        this.idCountry = countryDTO.getIdCountry();
+        this.countryCode = countryDTO.getCountryCode();
+        this.name = countryDTO.getName();
+    }
 
 }

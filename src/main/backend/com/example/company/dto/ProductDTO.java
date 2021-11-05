@@ -18,7 +18,7 @@ public class ProductDTO {
     private ProductState productState = ProductState.ACTIVE;
     private Date creationDate;
     private List<SupplierDTO> supplierList = new ArrayList();
-    private List<PriceReductionDTO> priceReductionList;
+    private List<PriceReductionDTO> priceReductionList = new ArrayList<>();
 
     public ProductDTO(Product product){
         this.idProduct = product.getIdProduct();
@@ -28,9 +28,25 @@ public class ProductDTO {
         this.creationDate = product.getCreationDate();
 
         for(Supplier supplier : product.getSupplierList()){
-            this.supplierList.add(new SupplierDTO(supplier));
+            this.supplierList.add(new SupplierDTO(supplier,false));
         }
 
+        for(PriceReduction priceReduction: product.getPriceReductionList()){
+            this.priceReductionList.add(new PriceReductionDTO(priceReduction));
+        }
+    }
+
+    public ProductDTO(Product product,boolean aux){
+        this.idProduct = product.getIdProduct();
+        this.price = product.getPrice();
+        this.description = product.getDescription();
+        this.productState = product.getProductState();
+        this.creationDate = product.getCreationDate();
+        if(aux){
+            for(Supplier supplier : product.getSupplierList()){
+                this.supplierList.add(new SupplierDTO(supplier));
+            }
+        }
         for(PriceReduction priceReduction: product.getPriceReductionList()){
             this.priceReductionList.add(new PriceReductionDTO(priceReduction));
         }

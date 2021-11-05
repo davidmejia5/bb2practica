@@ -266,3 +266,16 @@ INSERT INTO COUNTRY VALUES(240, 'ZW', 'Zimbabue');
 INSERT INTO SUPPLIER (idsupplier,name,idcountry) values (1,'Antonio',73)
 INSERT INTO SUPPLIER (idsupplier,name,idcountry) values (2,'Tony',4)
 INSERT INTO SUPPLIER (idsupplier,name,idcountry) values (3,'Carlos',6)
+
+
+--Discount
+INSERT INTO PRICE_REDUCTION (idproduct,idpricereduction) VALUES (1,2)
+INSERT INTO PRICE_REDUCTION (idproduct,idpricereduction) VALUES (3,1)
+INSERT INTO PRICE_REDUCTION (idproduct,idpricereduction) VALUES (5,3)
+
+--Add supplier
+INSERT INTO PRODUCT_SUPPLIER (idproduct,idsupplier) VALUES (1,1)
+INSERT INTO PRODUCT_SUPPLIER (idproduct,idsupplier) VALUES (2,1)
+INSERT INTO PRODUCT_SUPPLIER (idproduct,idsupplier) VALUES (3,2)
+INSERT INTO PRODUCT_SUPPLIER (idproduct,idsupplier) VALUES (4,1)
+INSERT INTO PRODUCT_SUPPLIER (idproduct,idsupplier) VALUES (5,3)

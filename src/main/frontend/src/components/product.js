@@ -12,6 +12,7 @@ function Product() {
   const getproduct = async () => {
     const response = await fetch('/products')
     const body = await response.json()
+    console.log(body)
     setstate({ product: body })
   }
 
@@ -24,8 +25,18 @@ function Product() {
     setFlag(true)
   }
 
-  const editProduct = () => {
-    history.push(`/editproduct/${product.idProduct}`)
+  const showProduct = (prod) => {
+    history.push({
+      pathname: '/showproduct',
+      state: prod,
+    })
+  }
+
+  const editProduct = (prod) => {
+    history.push({
+      pathname: '/editproduct',
+      state: prod,
+    })
   }
 
   useEffect(() => {
@@ -59,12 +70,18 @@ function Product() {
               >
                 <Dropdown.Item
                   eventKey='1'
-                  onClick={() => editProduct(product.idProduct)}
+                  onClick={() => editProduct(product)}
                 >
                   Edit
                 </Dropdown.Item>
                 <Dropdown.Item
                   eventKey='2'
+                  onClick={() => showProduct(product)}
+                >
+                  Show Info
+                </Dropdown.Item>
+                <Dropdown.Item
+                  eventKey='3'
                   onClick={() => deleteProduct(product.idProduct)}
                 >
                   Delete

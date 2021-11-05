@@ -17,8 +17,20 @@ public class SupplierDTO {
         this.name = supplier.getName();
         this.countryDTO = new CountryDTO(supplier.getCountry());
         for(Product product : supplier.getProducts()){
-            this.products.add(new ProductDTO(product));
+            this.products.add( new ProductDTO(product,false));
         }
+    }
+
+    public SupplierDTO(Supplier supplier,boolean aux){
+        this.id = supplier.getId();
+        this.name = supplier.getName();
+        this.countryDTO = new CountryDTO(supplier.getCountry());
+        if(aux){
+            for(Product product : supplier.getProducts()){
+                this.products.add( new ProductDTO(product));
+            }
+        }
+
     }
 
     public Long getId() {

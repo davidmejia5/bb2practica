@@ -4,6 +4,9 @@ import Login from './components/login'
 import Product from './components/product'
 import Error from './components/error'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import EditProduct from './components/EditProduct'
+import Home from './components/home'
+import Showproduct from './components/Showproduct'
 
 function App() {
   return (
@@ -15,8 +18,17 @@ function App() {
             <Login />
           </div>
         </Route>
+        <Route path='/home'>
+          <Home />
+        </Route>
+        <Route path='/showproduct'>
+          <Showproduct />
+        </Route>
         <Route path='/product'>
           <Product />
+        </Route>
+        <Route path='/editproduct'>
+          <EditProduct />
         </Route>
         <Route path='*'>
           <Error />

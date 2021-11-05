@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { useHistory } from 'react-router-dom'
@@ -8,14 +8,15 @@ function Login(props) {
   const [password, setPassword] = useState('')
   const [client, setClient] = useState({ user: [] })
   const history = useHistory()
-  console.log(props)
+
   const searchEmail = async () => {
     const url = '/user/' + email
     const response = await fetch(url)
     const data = await response.json()
-    console.log(data)
+    // console.log(data)
     setClient({ user: data })
   }
+
   const { user } = client
   const handleSumit = (e) => {
     e.preventDefault()
@@ -23,10 +24,17 @@ function Login(props) {
     searchEmail()
     if (user.email === email && user.password === password) {
       localStorage.setItem('user', JSON.stringify(user))
-      history.push('/product')
+      history.push('/home')
     }
     //To do: Mensaje error para usuario invalido
   }
+
+  useEffect(() => {
+    if (localStorage.getItem('user')) {
+      history.push('/home')
+    }
+    console.log(localStorage.getItem('user'))
+  }, [])
 
   return (
     <Form>

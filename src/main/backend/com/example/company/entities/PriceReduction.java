@@ -2,6 +2,7 @@ package com.example.company.entities;
 
 import com.example.company.dto.PriceReductionDTO;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @Table(name = "pricereduction")
 public class PriceReduction {
     @Id
@@ -27,4 +29,10 @@ public class PriceReduction {
     @ManyToMany(mappedBy = "priceReductionList")
     List<Product> productList = new ArrayList<>();
 
+    public PriceReduction(PriceReductionDTO priceReductionDTO){
+        this.id = priceReductionDTO.getId();
+        this.reducePrice = priceReductionDTO.getReducePrice();
+        this.startDay = priceReductionDTO.getStartDay();
+        this.endDay = priceReductionDTO.getEndDay();
+    }
 }

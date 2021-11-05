@@ -3,12 +3,12 @@ package com.example.company.service;
 import com.example.company.dto.ProductDTO;
 import com.example.company.entities.Product;
 import com.example.company.repository.ProductRepository;
-import com.googlecode.jmapper.JMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -35,11 +35,17 @@ public class ProductServiceImpl implements ProductService{
         productRepository.deleteById(id);
     }
 
-    public Product save(ProductDTO productDTO){
-        JMapper<Product,ProductDTO> productDTOJMapper = new JMapper<>(Product.class,ProductDTO.class);
-        Product result = productDTOJMapper.getDestination(productDTO);
-        productRepository.save(result);
-        return result;
+    public Optional<Product> update(ProductDTO productDTO){
+
+        Optional<Product> prod = productRepository.findById(productDTO.getIdProduct());
+        if(prod.isPresent()){
+            //Modificar datos en entidad
+            //set del dto 
+            productRepository.save(prod.get());
+            return prod;
+        }
+
+        return Optional.empty();
     }
 
 }
