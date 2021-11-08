@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Nav from 'react-bootstrap/Nav'
+import { useHistory } from 'react-router-dom'
 
 const Home = () => {
+  const history = useHistory()
+
+  useEffect(() => {
+    if (!localStorage.getItem('user')) {
+      history.push('/')
+    }
+  }, [])
+
   return (
     <Nav defaultActiveKey='' className='flex-column'>
       <Nav.Link href='/product'>Products</Nav.Link>

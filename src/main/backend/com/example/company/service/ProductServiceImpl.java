@@ -2,6 +2,7 @@ package com.example.company.service;
 
 import com.example.company.dto.ProductDTO;
 import com.example.company.entities.Product;
+import com.example.company.enums.ProductState;
 import com.example.company.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,20 @@ public class ProductServiceImpl implements ProductService{
         return productDTOList;
     }
 
+    public void changeState(Long id) {
+        Optional<Product> prod = productRepository.findById(id);
+        if(prod.isPresent()){
+            if(prod.get().getProductState().getState() == 0 ){
+                ProductState productState = prod.get().getProductState();
+                productState.setState(1);
+                productState.setValueState("Discounted");
+                prod.get().setProductState(productState);
+                productRepository.save(prod.get());
+            }
+        }
+    }
+
+
     public void deleteProductById(Long id){
         productRepository.deleteById(id);
     }
@@ -47,7 +62,6 @@ public class ProductServiceImpl implements ProductService{
             productRepository.save(prod.get());
             return prod;
         }
-
         return Optional.empty();
     }
 

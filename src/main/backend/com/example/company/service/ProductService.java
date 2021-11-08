@@ -11,4 +11,5 @@ public interface ProductService {
     public void deleteProductById(Long id);
     public Optional<Product> update(ProductDTO product);
     public List<ProductDTO> findAllProduct();
+    public void changeState(Long id);
 }

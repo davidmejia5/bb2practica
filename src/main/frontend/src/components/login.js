@@ -4,29 +4,42 @@ import Button from 'react-bootstrap/Button'
 import { useHistory } from 'react-router-dom'
 
 function Login(props) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [client, setClient] = useState({ user: [] })
+  //const [email, setEmail] = useState('')
+  //const [password, setPassword] = useState('')
+  const [client, setClient] = useState({})
+  const [user, setUser] = useState({})
   const history = useHistory()
 
   const searchEmail = async () => {
-    const url = '/user/' + email
+    const url = '/user/' + client.email
     const response = await fetch(url)
     const data = await response.json()
     // console.log(data)
-    setClient({ user: data })
+    setUser(data)
   }
 
-  const { user } = client
+  //const { user } = client
+
   const handleSumit = (e) => {
     e.preventDefault()
 
     searchEmail()
-    if (user.email === email && user.password === password) {
+    //console.log('1: ', client)
+    //console.log('2: ', user)
+    if (user.email === client.email && user.password === client.password) {
       localStorage.setItem('user', JSON.stringify(user))
       history.push('/home')
     }
+
     //To do: Mensaje error para usuario invalido
+  }
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setClient({
+      ...client,
+      [name]: value,
+    })
   }
 
   useEffect(() => {
@@ -43,8 +56,9 @@ function Login(props) {
         <Form.Control
           type='email'
           placeholder='Enter email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          name='email'
+          value={client.email}
+          onChange={(e) => handleInputChange(e)}
         />
         <Form.Text className='text-muted'>
           We'll never share your email with anyone else.
@@ -55,8 +69,9 @@ function Login(props) {
         <Form.Control
           type='password'
           placeholder='Password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          name='password'
+          value={client.password}
+          onChange={(e) => handleInputChange(e)}
         />
       </Form.Group>
       <Form.Group className='mb-3' controlId='formBasicCheckbox'>

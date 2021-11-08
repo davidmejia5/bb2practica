@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Table from 'react-bootstrap/Table'
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import Dropdown from 'react-bootstrap/Dropdown'
+import { DropdownButton, Table, Dropdown, Button } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 
 function Product() {
@@ -14,6 +12,9 @@ function Product() {
     const body = await response.json()
     console.log(body)
     setstate({ product: body })
+  }
+  const addProduct = () => {
+    history.push('/addproduct')
   }
 
   const deleteProduct = async (productId) => {
@@ -39,7 +40,23 @@ function Product() {
     })
   }
 
+  const deactive = (prod) => {
+    /* const url = '/products/changestate/' + productid
+    const options = {
+      method: 'POST',
+    }
+    fetch(url, options) */
+    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+    history.push({
+      pathname: '/deactive',
+      state: prod,
+    })
+  }
+
   useEffect(() => {
+    if (!localStorage.getItem('user')) {
+      history.push('/')
+    }
     getproduct()
     setFlag(false)
   }, [flag])
@@ -53,6 +70,11 @@ function Product() {
           <th>Description</th>
           <th>Price</th>
           <th>State</th>
+          <th>
+            <Button variant='primary' onClick={() => addProduct()}>
+              Add
+            </Button>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -62,6 +84,11 @@ function Product() {
             <td>{product.description}</td>
             <td>{product.price} €</td>
             <td>{product.productState}</td>
+            <td>
+              <Button variant='primary' onClick={() => deactive(product)}>
+                DISCOUNTED
+              </Button>
+            </td>
             <td>
               <DropdownButton
                 //as={ButtonGroup}
